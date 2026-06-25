@@ -16,7 +16,7 @@ export default function Hero() {
             <span className="text-xs font-mono text-zinc-400 uppercase tracking-wider">Професійний сервісний центр</span>
           </div>
           
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold font-display text-white tracking-tight leading-[1.1] mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold font-display text-white tracking-tight leading-[1.1] mb-6">
             Відновлюємо <br />
             <span className="text-amber-500 relative inline-block">
               техніку
@@ -56,9 +56,9 @@ export default function Hero() {
         </div>
         
         {/* Abstract Tech Illustration */}
-        <div className="hidden lg:flex justify-end items-center relative perspective-[1000px] w-full h-full min-h-[450px] xl:min-h-[550px]">
-          <div className="w-full max-w-[380px] xl:max-w-[450px] aspect-[3/4] relative transition-transform duration-700 hover:scale-105 lg:mr-4 xl:mr-8">
-            <div className="absolute inset-0 bg-gradient-to-tr from-zinc-900/80 to-zinc-800/20 backdrop-blur-xl border border-white/10 rounded-[30px] xl:rounded-[40px] transform -rotate-6 xl:-rotate-12 p-6 xl:p-8 shadow-2xl flex flex-col justify-between overflow-hidden">
+        <div className="hidden lg:flex justify-end items-center relative perspective-[1000px] w-full h-full py-8">
+          <div className="w-[320px] h-[420px] xl:w-[420px] xl:h-[540px] relative transition-transform duration-700 hover:scale-105 lg:mr-4 xl:mr-8">
+            <div className="absolute inset-0 bg-gradient-to-tr from-zinc-900/80 to-zinc-800/20 backdrop-blur-xl border border-white/10 rounded-[30px] xl:rounded-[40px] transform -rotate-3 lg:-rotate-6 xl:-rotate-12 p-6 xl:p-8 shadow-2xl flex flex-col justify-between overflow-hidden">
               
               <div className="flex justify-between items-center border-b border-white/5 pb-4">
                 <div className="flex space-x-2">
