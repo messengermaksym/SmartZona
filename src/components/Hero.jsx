@@ -56,9 +56,9 @@ export default function Hero() {
         </div>
         
         {/* Abstract Tech Illustration */}
-        <div className="hidden lg:flex justify-end relative perspective-[1000px]">
-          <div className="w-[500px] h-[600px] relative transition-transform duration-700 hover:scale-105">
-            <div className="absolute inset-0 bg-gradient-to-tr from-zinc-900/80 to-zinc-800/20 backdrop-blur-xl border border-white/10 rounded-[40px] transform -rotate-12 p-8 shadow-2xl flex flex-col justify-between overflow-hidden">
+        <div className="hidden lg:flex justify-end items-center relative perspective-[1000px] w-full h-full min-h-[450px] xl:min-h-[550px]">
+          <div className="w-full max-w-[380px] xl:max-w-[450px] aspect-[3/4] relative transition-transform duration-700 hover:scale-105 lg:mr-4 xl:mr-8">
+            <div className="absolute inset-0 bg-gradient-to-tr from-zinc-900/80 to-zinc-800/20 backdrop-blur-xl border border-white/10 rounded-[30px] xl:rounded-[40px] transform -rotate-6 xl:-rotate-12 p-6 xl:p-8 shadow-2xl flex flex-col justify-between overflow-hidden">
               
               <div className="flex justify-between items-center border-b border-white/5 pb-4">
                 <div className="flex space-x-2">
@@ -69,26 +69,26 @@ export default function Hero() {
                 <span className="font-mono text-xs text-zinc-500">diag_sys_v2.4.1</span>
               </div>
               
-              <div className="flex-1 py-8 relative">
+              <div className="flex-1 py-4 xl:py-8 relative">
                 <div className="absolute top-0 left-0 w-full h-[2px] bg-amber-500 shadow-[0_0_15px_#F59E0B] animate-[scan_3s_ease-in-out_infinite] z-20"></div>
                 
-                <div className="space-y-4">
+                <div className="space-y-3 xl:space-y-4">
                   <div className="h-2 w-3/4 bg-zinc-800 rounded"></div>
                   <div className="h-2 w-1/2 bg-zinc-800 rounded"></div>
                   <div className="h-2 w-5/6 bg-zinc-800 rounded"></div>
                   
-                  <div className="mt-8 grid grid-cols-2 gap-4">
-                    <div className="h-24 bg-white/5 rounded-xl border border-white/5 flex items-center justify-center relative overflow-hidden group">
+                  <div className="mt-6 xl:mt-8 grid grid-cols-2 gap-3 xl:gap-4">
+                    <div className="h-20 xl:h-24 bg-white/5 rounded-xl border border-white/5 flex items-center justify-center relative overflow-hidden group">
                       <div className="absolute inset-0 bg-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                      <Cpu className="w-8 h-8 text-amber-500/50 group-hover:text-amber-500 transition-colors" />
+                      <Cpu className="w-6 h-6 xl:w-8 xl:h-8 text-amber-500/50 group-hover:text-amber-500 transition-colors" />
                     </div>
-                    <div className="h-24 bg-white/5 rounded-xl border border-white/5 flex items-center justify-center relative overflow-hidden group">
+                    <div className="h-20 xl:h-24 bg-white/5 rounded-xl border border-white/5 flex items-center justify-center relative overflow-hidden group">
                       <div className="absolute inset-0 bg-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                      <BatteryCharging className="w-8 h-8 text-emerald-500/50 group-hover:text-emerald-500 transition-colors" />
+                      <BatteryCharging className="w-6 h-6 xl:w-8 xl:h-8 text-emerald-500/50 group-hover:text-emerald-500 transition-colors" />
                     </div>
-                    <div className="h-24 bg-white/5 rounded-xl border border-white/5 flex items-center justify-center relative overflow-hidden group col-span-2">
+                    <div className="h-20 xl:h-24 bg-white/5 rounded-xl border border-white/5 flex items-center justify-center relative overflow-hidden group col-span-2">
                       <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                      <MemoryStick className="w-8 h-8 text-blue-500/50 group-hover:text-blue-500 transition-colors" />
+                      <MemoryStick className="w-6 h-6 xl:w-8 xl:h-8 text-blue-500/50 group-hover:text-blue-500 transition-colors" />
                     </div>
                   </div>
                 </div>
