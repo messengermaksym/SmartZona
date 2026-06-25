@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СмартЗона — Преміальний сервіс ремонту електроніки</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        zinc: {
+                            800: '#27272a',
+                            900: '#18181b',
+                            950: '#09090b',
+                        },
+                        amber: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS -->
+    <style>
+        .tech-grid {
+            background-image: radial-gradient(circle, #27272a 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .glass-panel {
+            background: rgba(24, 24, 27, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        
+        .input-floating {
+            transition: all 0.2s ease-out;
+        }
+        .input-floating:focus + label,
+        .input-floating:not(:placeholder-shown) + label {
+            transform: translateY(-1.5rem) scale(0.85);
+            color: #F59E0B;
+        }
+        
+        @keyframes scan {
+            0% { top: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-300 font-sans antialiased selection:bg-amber-500 selection:text-zinc-950">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 glass-panel border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3 group cursor-pointer">
+                <i data-lucide="cpu" class="text-amber-500 w-8 h-8 group-hover:animate-pulse"></i>
+                <span class="text-2xl font-bold font-display tracking-tight text-white uppercase">Смарт<span class="text-amber-500">Зона</span></span>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium uppercase tracking-wider">
+                <a href="#services" class="hover:text-amber-500 transition-colors">Прайс</a>
+                <a href="#advantages" class="hover:text-amber-500 transition-colors">Переваги</a>
+                <a href="#reviews" class="hover:text-amber-500 transition-colors">Відгуки</a>
+            </div>
+
+            <div class="flex items-center space-x-6">
+                <a href="tel:+380993652643" class="hidden sm:flex items-center space-x-2 text-white font-mono hover:text-amber-500 transition-colors">
+                    <i data-lucide="phone" class="w-4 h-4 text-amber-500"></i>
+                    <span>+38 (099) 365-26-43</span>
+                </a>
+                <a href="#cta" class="bg-amber-500 hover:bg-amber-400 text-zinc-950 font-display font-bold uppercase tracking-wide text-xs px-6 py-3 rounded-full transition-all hover:shadow-[0_0_15px_rgba(245,158,11,0.4)]">
+                    Викликати майстра
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
+        <!-- Background Effects -->
+        <div class="absolute inset-0 tech-grid opacity-30"></div>
+        <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full grid lg:grid-cols-2 gap-12 items-center mt-8">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center space-x-2 bg-zinc-900 border border-white/10 rounded-full px-4 py-1.5 mb-8">
+                    <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                    <span class="text-xs font-mono text-zinc-400 uppercase tracking-wider">Професійний сервісний центр</span>
+                </div>
+                
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold font-display text-white tracking-tight leading-[1.1] mb-6">
+                    Відновлюємо <br>
+                    <span class="text-amber-500 relative inline-block">
+                        техніку
+                        <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6C60.5 -1.5 145.5 -1.5 198 6" stroke="#F59E0B" stroke-width="3" stroke-linecap="round"/></svg>
+                    </span> 
+                    до ідеалу.
+                </h1>
+                
+                <p class="text-lg text-zinc-400 mb-10 max-w-lg leading-relaxed">
+                    Преміальний ремонт смартфонів, MacBook та ноутбуків у Мукачеві. 
+                    Точна діагностика, оригінальні запчастини та безумовна гарантія на кожну послугу.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#cta" class="inline-flex justify-center items-center space-x-2 bg-amber-500 hover:bg-amber-400 text-zinc-950 font-display font-bold uppercase tracking-wide text-sm px-8 py-4 rounded-full transition-all hover:shadow-[0_0_20px_rgba(245,158,11,0.3)]">
+                        <span>Залишити заявку</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#services" class="inline-flex justify-center items-center space-x-2 bg-zinc-900 hover:bg-zinc-800 border border-white/10 text-white font-display font-bold uppercase tracking-wide text-sm px-8 py-4 rounded-full transition-colors">
+                        <i data-lucide="terminal" class="w-4 h-4 text-zinc-400"></i>
+                        <span>Дивитись прайс</span>
+                    </a>
+                </div>
+                
+                <div class="mt-12 flex items-center space-x-6 text-sm font-mono text-zinc-500">
+                    <div class="flex items-center space-x-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500"></i>
+                        <span>Гарантія якості</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i data-lucide="zap" class="w-4 h-4 text-amber-500"></i>
+                        <span>Ремонт від 30 хв</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Abstract Tech Illustration -->
+            <div class="hidden lg:flex justify-end relative perspective-[1000px]">
+                <div class="w-[500px] h-[600px] relative transition-transform duration-700 hover:scale-105">
+                    <!-- Glassmorphism Card simulating a device scan -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-zinc-900/80 to-zinc-800/20 backdrop-blur-xl border border-white/10 rounded-[40px] transform -rotate-12 p-8 shadow-2xl flex flex-col justify-between overflow-hidden">
+                        
+                        <!-- Header -->
+                        <div class="flex justify-between items-center border-b border-white/5 pb-4">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                            </div>
+                            <span class="font-mono text-xs text-zinc-500">diag_sys_v2.4.1</span>
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="flex-1 py-8 relative">
+                            <!-- Scanning line animation -->
+                            <div class="absolute top-0 left-0 w-full h-[2px] bg-amber-500 shadow-[0_0_15px_#F59E0B] animate-[scan_3s_ease-in-out_infinite] z-20"></div>
+                            
+                            <div class="space-y-4">
+                                <div class="h-2 w-3/4 bg-zinc-800 rounded"></div>
+                                <div class="h-2 w-1/2 bg-zinc-800 rounded"></div>
+                                <div class="h-2 w-5/6 bg-zinc-800 rounded"></div>
+                                
+                                <div class="mt-8 grid grid-cols-2 gap-4">
+                                    <div class="h-24 bg-white/5 rounded-xl border border-white/5 flex items-center justify-center relative overflow-hidden group">
+                                        <div class="absolute inset-0 bg-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                        <i data-lucide="cpu" class="w-8 h-8 text-amber-500/50 group-hover:text-amber-500 transition-colors"></i>
+                                    </div>
+                                    <div class="h-24 bg-white/5 rounded-xl border border-white/5 flex items-center justify-center relative overflow-hidden group">
+                                        <div class="absolute inset-0 bg-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                        <i data-lucide="battery-charging" class="w-8 h-8 text-emerald-500/50 group-hover:text-emerald-500 transition-colors"></i>
+                                    </div>
+                                    <div class="h-24 bg-white/5 rounded-xl border border-white/5 flex items-center justify-center relative overflow-hidden group col-span-2">
+                                        <div class="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                        <i data-lucide="memory-stick" class="w-8 h-8 text-blue-500/50 group-hover:text-blue-500 transition-colors"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Footer -->
+                        <div class="font-mono text-xs text-amber-500">
+                            > SYSTEM OPTIMIZED
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages (Bento Grid) -->
+    <section id="advantages" class="py-24 bg-zinc-950 relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16 text-center md:text-left">
+                <span class="text-amber-500 font-mono text-sm tracking-wider uppercase mb-2 block">Інженерний підхід</span>
+                <h2 class="text-3xl md:text-5xl font-display font-bold text-white tracking-tight mb-4">
+                    Не просто ремонт.
+                </h2>
+                <p class="text-zinc-400 max-w-xl mx-auto md:mx-0">Ми відмовились від компромісів. Використовуємо краще обладнання та деталі, щоб ваша техніка працювала як нова.</p>
+            </div>
+
+            <!-- Bento Grid Container -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[220px]">
+                
+                <!-- Speed (Large) -->
+                <div class="md:col-span-2 md:row-span-2 relative rounded-3xl bg-zinc-900 border border-white/5 p-8 flex flex-col justify-between overflow-hidden group hover:border-amber-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/5">
+                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-500">
+                        <i data-lucide="zap" class="w-48 h-48 text-amber-500"></i>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 bg-zinc-800 rounded-2xl flex items-center justify-center mb-6 border border-white/5 group-hover:bg-amber-500/10 transition-colors">
+                            <i data-lucide="clock" class="w-6 h-6 text-amber-500"></i>
+                        </div>
+                        <h3 class="text-3xl font-display font-bold text-white mb-3">Максимальна швидкість</h3>
+                        <p class="text-zinc-400 text-sm md:text-base leading-relaxed max-w-sm">
+                            Більшість ремонтів виконуємо в день звернення. Заміна АКБ чи дисплея займає від 30 хвилин. Ви не залишитесь без зв'язку надовго.
+                        </p>
+                    </div>
+                    <div class="mt-8 z-10">
+                        <span class="inline-flex items-center space-x-2 text-xs font-mono font-medium text-amber-500 bg-amber-500/10 px-3 py-1.5 rounded-full border border-amber-500/20">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                            <span>Експрес-сервіс</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Quality (Small) -->
+                <div class="md:col-span-1 md:row-span-1 relative rounded-3xl bg-zinc-900 border border-white/5 p-6 flex flex-col justify-between group hover:border-amber-500/30 transition-all hover:shadow-xl hover:shadow-amber-500/5">
+                    <div class="w-10 h-10 bg-zinc-800 rounded-xl flex items-center justify-center border border-white/5 group-hover:bg-amber-500/10 transition-colors">
+                        <i data-lucide="cpu" class="w-5 h-5 text-amber-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-display font-bold text-white mb-2">Оригінальні деталі</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">Встановлюємо лише перевірені комплектуючі вищого класу.</p>
+                    </div>
+                </div>
+
+                <!-- Transparency (Small) -->
+                <div class="md:col-span-1 md:row-span-1 relative rounded-3xl bg-zinc-900 border border-white/5 p-6 flex flex-col justify-between group hover:border-amber-500/30 transition-all hover:shadow-xl hover:shadow-amber-500/5">
+                    <div class="w-10 h-10 bg-zinc-800 rounded-xl flex items-center justify-center border border-white/5 group-hover:bg-amber-500/10 transition-colors">
+                        <i data-lucide="search" class="w-5 h-5 text-amber-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-display font-bold text-white mb-2">Прозора ціна</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">Вартість фіксується після діагностики та не змінюється.</p>
+                    </div>
+                </div>
+
+                <!-- Guarantee (Medium Horizontal) -->
+                <div class="md:col-span-2 md:row-span-1 relative rounded-3xl bg-amber-500 p-8 flex flex-col justify-center overflow-hidden group hover:scale-[1.02] transition-transform duration-300">
+                    <div class="absolute inset-0 bg-[radial-gradient(#ffffff_2px,transparent_2px)] [background-size:16px_16px] opacity-10"></div>
+                    <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6">
+                        <div class="w-14 h-14 bg-zinc-950 rounded-2xl flex items-center justify-center shrink-0">
+                            <i data-lucide="shield-check" class="w-7 h-7 text-amber-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-display font-bold text-zinc-950 mb-1">Реальна Гарантія</h3>
+                            <p class="text-zinc-800 text-sm font-medium leading-relaxed">Ми відповідаємо за свою роботу. На кожну послугу надається офіційна гарантія сервісного центру.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services (Terminal Style) -->
+    <section id="services" class="py-24 bg-zinc-950 border-t border-white/5 relative">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900/40 via-zinc-950 to-zinc-950 pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-amber-500 font-mono text-sm tracking-wider uppercase mb-2 block">Diagnostic_Data</span>
+                <h2 class="text-3xl md:text-5xl font-display font-bold text-white">Прайс-лист на послуги</h2>
+            </div>
+
+            <div class="bg-zinc-900/80 backdrop-blur-md rounded-2xl border border-white/10 shadow-2xl overflow-hidden">
+                <!-- Terminal Header -->
+                <div class="bg-zinc-950 px-6 py-4 border-b border-white/5 flex items-center justify-between">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                    </div>
+                    <div class="font-mono text-xs text-zinc-500">services_list.sh</div>
+                    <div class="w-9"></div> <!-- Spacer for balance -->
+                </div>
+
+                <!-- Content -->
+                <div class="p-6 md:p-10 grid md:grid-cols-2 gap-12 font-mono text-sm">
+                    
+                    <!-- Phones -->
+                    <div>
+                        <div class="flex items-center space-x-2 text-amber-500 mb-6 border-b border-white/10 pb-4">
+                            <i data-lucide="smartphone" class="w-5 h-5"></i>
+                            <h3 class="text-lg font-bold font-display uppercase tracking-wider text-white">Смартфони</h3>
+                        </div>
+                        
+                        <div class="space-y-1">
+                            <div class="group flex justify-between items-end border-b border-white/5 py-3 hover:bg-white/5 transition-colors px-3 -mx-3 rounded-lg">
+                                <span class="text-zinc-300 pr-4">Заміна дисплея</span>
+                                <span class="text-amber-500 whitespace-nowrap font-bold">від 800 ₴</span>
+                            </div>
+                            <div class="group flex justify-between items-end border-b border-white/5 py-3 hover:bg-white/5 transition-colors px-3 -mx-3 rounded-lg">
+                                <span class="text-zinc-300 pr-4">Заміна АКБ</span>
+                                <span class="text-amber-500 whitespace-nowrap font-bold">від 450 ₴</span>
+                            </div>
+                            <div class="group flex justify-between items-end border-b border-white/5 py-3 hover:bg-white/5 transition-colors px-3 -mx-3 rounded-lg">
+                                <span class="text-zinc-300 pr-4">Ремонт гнізда зарядки</span>
+                                <span class="text-amber-500 whitespace-nowrap font-bold">від 400 ₴</span>
+                            </div>
+                            <div class="group flex justify-between items-end border-b border-white/5 py-3 hover:bg-white/5 transition-colors px-3 -mx-3 rounded-lg">
+                                <span class="text-zinc-300 pr-4">Відновлення після вологи</span>
+                                <span class="text-amber-500 whitespace-nowrap font-bold">від 600 ₴</span>
+                            </div>
+                            <div class="group flex justify-between items-end py-3 hover:bg-white/5 transition-colors px-3 -mx-3 rounded-lg">
+                                <span class="text-zinc-300 pr-4">Пайка мікросхем</span>
+                                <span class="text-amber-500 whitespace-nowrap font-bold">від 900 ₴</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Laptops -->
+                    <div>
+                        <div class="flex items-center space-x-2 text-amber-500 mb-6 border-b border-white/10 pb-4">
+                            <i data-lucide="laptop" class="w-5 h-5"></i>
+                            <h3 class="text-lg font-bold font-display uppercase tracking-wider text-white">Ноутбуки (Mac/PC)</h3>
+                        </div>
+                        
+                        <div class="space-y-1">
+                            <div class="group flex justify-between items-end border-b border-white/5 py-3 hover:bg-white/5 transition-colors px-3 -mx-3 rounded-lg">
+                                <span class="text-zinc-300 pr-4">Заміна батареї</span>
+                                <span class="text-amber-500 whitespace-nowrap font-bold">від 950 ₴</span>
+                            </div>
+                            <div class="group flex justify-between items-end border-b border-white/5 py-3 hover:bg-white/5 transition-colors px-3 -mx-3 rounded-lg">
+                                <span class="text-zinc-300 pr-4">Встановлення SSD</span>
+                                <span class="text-amber-500 whitespace-nowrap font-bold">від 500 ₴</span>
+                            </div>
+                            <div class="group flex justify-between items-end border-b border-white/5 py-3 hover:bg-white/5 transition-colors px-3 -mx-3 rounded-lg">
+                                <span class="text-zinc-300 pr-4">Чистка + термопаста</span>
+                                <span class="text-amber-500 whitespace-nowrap font-bold">450 ₴</span>
+                            </div>
+                            <div class="group flex justify-between items-end border-b border-white/5 py-3 hover:bg-white/5 transition-colors px-3 -mx-3 rounded-lg">
+                                <span class="text-zinc-300 pr-4">Заміна матриці</span>
+                                <span class="text-amber-500 whitespace-nowrap font-bold">від 1200 ₴</span>
+                            </div>
+                            <div class="group flex justify-between items-end py-3 hover:bg-white/5 transition-colors px-3 -mx-3 rounded-lg">
+                                <span class="text-zinc-300 pr-4">Відновлення корпусу</span>
+                                <span class="text-amber-500 whitespace-nowrap font-bold">від 700 ₴</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="mt-8 flex justify-center items-center text-zinc-500 text-sm font-mono">
+                <i data-lucide="info" class="w-4 h-4 mr-2"></i>
+                Точна вартість встановлюється майстром після безкоштовної діагностики.
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Magnet CTA -->
+    <section id="cta" class="py-24 relative overflow-hidden bg-zinc-950 border-t border-white/5">
+        <!-- Glowing Orb -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-amber-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+            <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+                Потрібна <span class="text-amber-500">експрес-діагностика?</span>
+            </h2>
+            <p class="text-zinc-400 text-lg mb-12 max-w-2xl mx-auto">
+                Залиште заявку, і майстер зв'яжеться з вами за 5 хвилин для попередньої оцінки вартості та термінів ремонту.
+            </p>
+
+            <form class="bg-zinc-900/80 backdrop-blur-xl border border-white/10 p-8 rounded-3xl shadow-2xl max-w-3xl mx-auto flex flex-col md:flex-row gap-8 items-end">
+                
+                <div class="relative w-full text-left">
+                    <input type="text" id="name" required placeholder=" " 
+                        class="input-floating peer w-full bg-transparent border-b border-zinc-700 text-white pb-2 pt-5 focus:outline-none focus:border-amber-500 transition-colors">
+                    <label for="name" class="absolute left-0 top-5 text-zinc-500 text-base transition-all pointer-events-none origin-left">Ваше ім'я</label>
+                </div>
+                
+                <div class="relative w-full text-left">
+                    <input type="tel" id="phone" required placeholder=" " 
+                        class="input-floating peer w-full bg-transparent border-b border-zinc-700 text-white pb-2 pt-5 focus:outline-none focus:border-amber-500 transition-colors">
+                    <label for="phone" class="absolute left-0 top-5 text-zinc-500 text-base transition-all pointer-events-none origin-left">Номер телефону</label>
+                </div>
+
+                <button type="submit" 
+                    class="w-full md:w-auto bg-amber-500 hover:bg-amber-400 text-zinc-950 font-display font-bold uppercase tracking-wide px-8 py-4 rounded-xl transition-all hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] shrink-0 mt-4 md:mt-0">
+                    Надіслати
+                </button>
+            </form>
+            
+            <div class="mt-8 flex justify-center items-center text-zinc-500 text-xs font-mono">
+                <i data-lucide="lock" class="w-3 h-3 mr-2"></i>
+                Ваші дані захищені. Ми не надсилаємо спам.
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="py-24 bg-zinc-950 border-t border-white/5 relative">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-zinc-900/20 via-zinc-950 to-zinc-950 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-4">Відгуки клієнтів</h2>
+                    <p class="text-zinc-400 font-mono text-sm uppercase tracking-wider">Реальні історії з Google Maps</p>
+                </div>
+                <div class="mt-6 md:mt-0 flex items-center space-x-2 bg-zinc-900 border border-white/10 px-4 py-2 rounded-full">
+                    <div class="flex space-x-1 text-amber-500">
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                    </div>
+                    <span class="text-white font-bold text-sm ml-2">5.0</span>
+                </div>
+            </div>
+
+            <!-- Carousel -->
+            <div class="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory gap-6 pb-8 -mx-6 px-6">
+                
+                <!-- Card 1 -->
+                <div class="snap-center w-[85vw] md:w-[400px] shrink-0 bg-zinc-900 border border-white/5 p-8 rounded-3xl flex flex-col justify-between hover:border-amber-500/30 hover:shadow-xl hover:shadow-amber-500/5 transition-all">
+                    <div class="mb-8">
+                        <div class="flex space-x-1 text-amber-500 mb-6">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                        </div>
+                        <p class="text-zinc-300 text-sm leading-relaxed">
+                            "Ремонтував у цьому сервісі свій MacBook — потрібно було замінити батарею та SSD. Роботу виконали швидко, якісно і без зайвих затримок. Майстри все пояснили, порадили оптимальні комплектуючі та зробили ремонт у домовлений термін."
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/5 pt-6">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-zinc-950 border border-white/10 flex items-center justify-center text-amber-500 font-bold font-display">K</div>
+                            <span class="text-white text-sm font-medium">Клієнт Google</span>
+                        </div>
+                        <span class="text-zinc-500 text-xs font-mono">3 міс. тому</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="snap-center w-[85vw] md:w-[400px] shrink-0 bg-zinc-900 border border-white/5 p-8 rounded-3xl flex flex-col justify-between hover:border-amber-500/30 hover:shadow-xl hover:shadow-amber-500/5 transition-all">
+                    <div class="mb-8">
+                        <div class="flex space-x-1 text-amber-500 mb-6">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                        </div>
+                        <p class="text-zinc-300 text-sm leading-relaxed">
+                            "Дуже задоволений сервісом СмартЗона - ремонт/сервіс телефонів 👍 Майстри реально знають свою справу — швидко знайшли проблему та якісно все полагодили. Приємно здивували ціни та ставлення до клієнта."
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/5 pt-6">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-zinc-950 border border-white/10 flex items-center justify-center text-amber-500 font-bold font-display">G</div>
+                            <span class="text-white text-sm font-medium">Клієнт Google</span>
+                        </div>
+                        <span class="text-zinc-500 text-xs font-mono">1 міс. тому</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="snap-center w-[85vw] md:w-[400px] shrink-0 bg-zinc-900 border border-white/5 p-8 rounded-3xl flex flex-col justify-between hover:border-amber-500/30 hover:shadow-xl hover:shadow-amber-500/5 transition-all">
+                    <div class="mb-8">
+                        <div class="flex space-x-1 text-amber-500 mb-6">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                        </div>
+                        <p class="text-zinc-300 text-sm leading-relaxed">
+                            "Звернулась в даний сервіс щоб замінити батарею на телефон, була приємно здивована швидкістю виконання та якістю. Ще й на додачу придбала новенький чохол для телефону. Ще не раз за потреби звернусь!"
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/5 pt-6">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-zinc-950 border border-white/10 flex items-center justify-center text-amber-500 font-bold font-display">A</div>
+                            <span class="text-white text-sm font-medium">Клієнт Google</span>
+                        </div>
+                        <span class="text-zinc-500 text-xs font-mono">1 рік тому</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-950 border-t border-white/5 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                
+                <!-- Brand -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <i data-lucide="cpu" class="text-amber-500 w-6 h-6"></i>
+                        <span class="text-xl font-bold font-display tracking-tight text-white uppercase">Смарт<span class="text-amber-500">Зона</span></span>
+                    </div>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-8 max-w-sm">
+                        Ремонт цифрової техніки будь-якої складності. Тільки перевірені майстри, професійне обладнання та повна прозорість для клієнта.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://maps.app.goo.gl/RqwuvJsDcmcJKPsF9" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:text-amber-500 hover:border-amber-500/50 transition-colors group">
+                            <i data-lucide="map-pin" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                        </a>
+                        <a href="tel:+380993652643" class="w-12 h-12 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:text-amber-500 hover:border-amber-500/50 transition-colors group">
+                            <i data-lucide="phone" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-display font-bold text-lg mb-6">Контакти</h4>
+                    <ul class="space-y-4 text-sm text-zinc-400">
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-amber-500 mt-1 shrink-0"></i>
+                            <span class="leading-relaxed">м. Мукачево, Закарпатська область, Україна</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i data-lucide="phone" class="w-4 h-4 text-amber-500 shrink-0"></i>
+                            <a href="tel:+380993652643" class="hover:text-amber-500 transition-colors">+38 (099) 365-26-43</a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i data-lucide="mail" class="w-4 h-4 text-amber-500 shrink-0"></i>
+                            <a href="mailto:maksmasenditch@gmail.com" class="hover:text-amber-500 transition-colors">maksmasenditch@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Hours -->
+                <div>
+                    <h4 class="text-white font-display font-bold text-lg mb-6">Графік роботи</h4>
+                    <ul class="space-y-3 text-sm font-mono text-zinc-400">
+                        <li class="flex justify-between border-b border-white/5 pb-3">
+                            <span>Пн - Пт</span>
+                            <span class="text-white">09:00 - 19:00</span>
+                        </li>
+                        <li class="flex justify-between border-b border-white/5 pb-3">
+                            <span>Субота</span>
+                            <span class="text-white">10:00 - 16:00</span>
+                        </li>
+                        <li class="flex justify-between pb-3 text-zinc-500">
+                            <span>Неділя</span>
+                            <span>Вихідний</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between border-t border-white/5 pt-8 text-xs text-zinc-500 font-mono">
+                <p>&copy; 2026 СмартЗона. Всі права захищені.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-zinc-300 transition-colors">Політика конфіденційності</a>
+                    <a href="#" class="hover:text-zinc-300 transition-colors">Умови використання</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
