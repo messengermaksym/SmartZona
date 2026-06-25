@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .tech-grid {
-    background-image: radial-gradient(circle, #27272a 1px, transparent 1px);
+    background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
     background-size: 24px 24px;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .glass-panel {
-    background: rgba(24, 24, 27, 0.4);
+    background: rgba(248, 250, 252, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }

@@ -12,15 +12,24 @@ export default {
         mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
+        white: '#0f172a', // Slate-900 for dark headings
         zinc: {
-          800: '#27272a',
-          900: '#18181b',
-          950: '#09090b',
+          50: '#0f172a',
+          100: '#1e293b',
+          200: '#334155',
+          300: '#475569',
+          400: '#64748b',
+          500: '#94a3b8',
+          600: '#cbd5e1',
+          700: '#e2e8f0',
+          800: '#f1f5f9', // Light gray-blue panel bg
+          900: '#f8fafc', // Very light background
+          950: '#ffffff', // Main page background (pure white)
         },
         amber: {
-          400: '#fbbf24',
-          500: '#f59e0b',
-          600: '#d97706',
+          400: '#60a5fa', // Blue accent
+          500: '#3b82f6', // Primary blue
+          600: '#2563eb', // Darker blue
         }
       }
     }
