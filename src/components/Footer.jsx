@@ -1,12 +1,12 @@
 import React from 'react';
-import { Cpu, MapPin, Phone, Mail } from 'lucide-react';
+import { Cpu, MapPin, Phone } from 'lucide-react';
 
 export default function Footer() {
   return (
     <footer className="bg-zinc-950 border-t border-white/5 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          
+
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
@@ -34,15 +34,11 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-zinc-400">
               <li className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-amber-500 mt-1 shrink-0" />
-                <span className="leading-relaxed">м. Мукачево, Закарпатська область, Україна</span>
+                <span className="leading-relaxed">вулиця Миколи Коперника, 60, Львів, Львівська область, 79000</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-amber-500 shrink-0" />
-                <a href="tel:+380993652643" className="hover:text-amber-500 transition-colors">+38 (099) 365-26-43</a>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-amber-500 shrink-0" />
-                <a href="mailto:maksmasenditch@gmail.com" className="hover:text-amber-500 transition-colors">maksmasenditch@gmail.com</a>
+                <a href="tel:+380733044450" className="hover:text-amber-500 transition-colors">+38 (073) 304-44-50</a>
               </li>
             </ul>
           </div>
